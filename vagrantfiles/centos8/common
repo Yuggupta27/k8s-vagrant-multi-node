@@ -3,6 +3,7 @@ $box_image = ENV['BOX_IMAGE'].to_s.strip.empty? ? 'centos/8'.freeze : ENV['BOX_I
 # Stop and disable firewalld service
 $osPrepareScript = <<SCRIPT
 set -x
+df -hT
 
 if [ -n "#{HTTP_PROXY}" ]; then
     cat <<EOF >> /etc/yum.conf
